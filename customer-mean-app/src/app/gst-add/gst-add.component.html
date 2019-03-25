@@ -1,0 +1,38 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="angForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">Customer Name</label>
+        <input type="text" class="form-control" formControlName="c_name" #c_name/>
+      </div>
+      <div *ngIf="angForm.controls['c_name'].invalid && (angForm.controls['c_name'].dirty || angForm.controls['c_name'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['c_name'].errors.required">
+          Customer Name is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Email </label>
+        <input type="text" class="form-control" formControlName="c_email" #c_email />
+      </div>
+      <div *ngIf="angForm.controls['c_email'].invalid && (angForm.controls['c_email'].dirty || angForm.controls['c_email'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['c_email'].errors.required">
+          Customer Email Address is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Customer ID </label>
+        <input type="text" class="form-control" formControlName="c_id" #c_id />
+      </div>
+      <div *ngIf="angForm.controls['c_id'].invalid && (angForm.controls['c_id'].dirty || angForm.controls['c_id'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['c_id'].errors.required">
+          Customer ID is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <button (click)="addCustomer(c_id.value, c_name.value, c_email.value)"
+        [disabled]="angForm.pristine || angForm.invalid" 
+        class="btn btn-primary">Add Customer</button>
+      </div>
+    </form>
+  </div>
+</div>
